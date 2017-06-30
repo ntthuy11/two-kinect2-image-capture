@@ -5,7 +5,7 @@ You will need to install libfreenect2 (https://github.com/OpenKinect/libfreenect
 
 To run the code:
   After done installing libfreenect2, copy the Protonect.cpp to 
-  C:\Program Files\Git\libfreenect2\examples
+    C:\Program Files\Git\libfreenect2\examples
   then open its project in 
-  C:\Program Files\Git\libfreenect2\build
+    C:\Program Files\Git\libfreenect2\build
   to compile and run Protonect.
