@@ -1,5 +1,0 @@
-After done installing libfreenect2, copy the Protonect.cpp to 
-C:\Program Files\Git\libfreenect2\examples
-then open its project in 
-C:\Program Files\Git\libfreenect2\build
-to compile and run Protonect.
