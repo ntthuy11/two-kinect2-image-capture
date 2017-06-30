@@ -35,8 +35,8 @@ std::string getCurrentTimeAsString() {
 	time_t currentTime;
 	time(&currentTime); // get the current time
 
-	struct tm *localTime = localtime(&currentTime);  // Convert the current time to the local time
-	int year = localTime->tm_year + 1900;	// 4 digits
+	struct tm *localTime = localtime(&currentTime); // Convert the current time to the local time
+	int year = localTime->tm_year + 1900;		// 4 digits
 	int month = localTime->tm_mon + 1;		// 1 to 2 digits
 	int day = localTime->tm_mday;			// 1 to 2
 	int hour = localTime->tm_hour;			// 1 to 2
@@ -86,14 +86,14 @@ void saveRGBImage(libfreenect2::Frame *alignedRGB, cv::String filename) { // reg
 void saveFrames(libfreenect2::Frame *depth01, libfreenect2::Frame *alignedRGB01, libfreenect2::Frame *rgb01) {
 	std::string currTimeStr = getCurrentTimeAsString();
 
-	std::stringstream ss01depth;	ss01depth	<< DEV01_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth01, ss01depth.str());
+	std::stringstream ss01depth;	ss01depth   << DEV01_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth01, ss01depth.str());
 	std::stringstream ss01aligned;	ss01aligned << DEV01_SERIAL << "_aligned_"	<< currTimeStr << PNG_EXTENTION;		saveRGBImage(alignedRGB01, ss01aligned.str());
-	std::stringstream ss01rgb;		ss01rgb		<< DEV01_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb01, ss01rgb.str());	// save to BMP is much faster than PNG
+	std::stringstream ss01rgb;	ss01rgb	    << DEV01_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb01, ss01rgb.str());	// save to BMP is much faster than PNG
 
 	// release
-	ss01depth.clear();		ss01depth.str(std::string());  // release stringstream
+	ss01depth.clear();	ss01depth.str(std::string());  // release stringstream
 	ss01aligned.clear();	ss01aligned.str(std::string());
-	ss01rgb.clear();		ss01rgb.str(std::string());
+	ss01rgb.clear();	ss01rgb.str(std::string());
 }
 
 
@@ -101,27 +101,27 @@ void saveFrames(libfreenect2::Frame *depth01, libfreenect2::Frame *alignedRGB01,
 				libfreenect2::Frame *depth02, libfreenect2::Frame *alignedRGB02, libfreenect2::Frame *rgb02) {
 	std::string currTimeStr = getCurrentTimeAsString();
 
-	std::stringstream ss01depth;	ss01depth	<< DEV01_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth01, ss01depth.str());
+	std::stringstream ss01depth;	ss01depth   << DEV01_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth01, ss01depth.str());
 	std::stringstream ss01aligned;	ss01aligned << DEV01_SERIAL << "_aligned_"	<< currTimeStr << PNG_EXTENTION;		saveRGBImage(alignedRGB01, ss01aligned.str());
-	std::stringstream ss01rgb;		ss01rgb		<< DEV01_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb01, ss01rgb.str());
+	std::stringstream ss01rgb;	ss01rgb	    << DEV01_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb01, ss01rgb.str());
 
-	std::stringstream ss02depth;	ss02depth	<< DEV02_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth02, ss02depth.str());
+	std::stringstream ss02depth;	ss02depth   << DEV02_SERIAL << "_depth_"	<< currTimeStr << PNG_EXTENTION;		saveDepthImage(depth02, ss02depth.str());
 	std::stringstream ss02aligned;	ss02aligned << DEV02_SERIAL << "_aligned_"	<< currTimeStr << PNG_EXTENTION;		saveRGBImage(alignedRGB02, ss02aligned.str());
-	std::stringstream ss02rgb;		ss02rgb		<< DEV02_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb02, ss02rgb.str());
+	std::stringstream ss02rgb;	ss02rgb	    << DEV02_SERIAL << "_rgb_"		<< currTimeStr << BMP_EXTENTION;		saveRGBImage(rgb02, ss02rgb.str());
 
 	// release
-	ss01depth.clear();		ss01depth.str(std::string());  // release stringstream
+	ss01depth.clear();	ss01depth.str(std::string());  // release stringstream
 	ss01aligned.clear();	ss01aligned.str(std::string());
-	ss01rgb.clear();		ss01rgb.str(std::string());
+	ss01rgb.clear();	ss01rgb.str(std::string());
 
-	ss02depth.clear();		ss02depth.str(std::string());  // release stringstream
+	ss02depth.clear();	ss02depth.str(std::string());  // release stringstream
 	ss02aligned.clear();	ss02aligned.str(std::string());
-	ss02rgb.clear();		ss02rgb.str(std::string());
+	ss02rgb.clear();	ss02rgb.str(std::string());
 }
 
 
 int GetDeviceListener(libfreenect2::Freenect2 *freenect2, std::string serial, libfreenect2::Freenect2Device **dev,
-					  libfreenect2::SyncMultiFrameListener *listener, libfreenect2::Registration **registration) {
+		      libfreenect2::SyncMultiFrameListener *listener, libfreenect2::Registration **registration) {
 	*dev = freenect2->openDevice(serial);
 	if (*dev == 0) {
 		std::cout << "Failure opening device " << serial << std::endl;
@@ -273,8 +273,8 @@ int main(int argc, char *argv[]) {
     }
 
 	// show frames, when viewer is enabled
-    /*viewer.addFrame("RGB", rgb01);		// correct naming is required:  "ir" is top-left,		"registered" is top-right
-    viewer.addFrame("ir", ir02);			//								"RGB" is bottom-left,	"depth" is bottom-right,
+    /*viewer.addFrame("RGB", rgb01); // correct naming is required:  "ir" is top-left, "registered" is top-right
+    viewer.addFrame("ir", ir02); //				"RGB" is bottom-left,	"depth" is bottom-right,
 	viewer.addFrame("depth", depth01);
     viewer.addFrame("registered", &registered01);
 	*/
